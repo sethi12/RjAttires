@@ -1,15 +1,15 @@
-"use client";
-
-
-import Link from "next/link";
+"use client"
+import Link from 'next/link';
+import React from 'react'
 import { useState, useEffect } from "react";
-import Trendingsection from "./components/Trendingsection";
-import Aboutsection from "./components/Aboutsection";
-import UspSection from "./components/Uspsection";
+import Trendingsection from '../components/Trendingsection';
+import Aboutsection from '../components/Aboutsection';
+import UspSection from '../components/Uspsection';
+import Collections from '../components/Collections';
+import ReviewsSection from '../components/ReviewSection';
 
-
-export default function Home() {
-  const sections = [
+function page() {
+    const sections = [
     {
       type: "carousel",
       images: [
@@ -35,7 +35,7 @@ export default function Home() {
     },
   ];
 
-  return (
+return (
     <main className="w-full">
       {/* Top Sections */}
       <div className="flex flex-col gap-10 py-6">
@@ -43,8 +43,26 @@ export default function Home() {
           if (section.type === "carousel") {
             return <Carousel key={index} images={section.images} />;
           }
-
-          return (
+            
+        //   return (
+        //     <Link key={index} href={section.link} className="block">
+        //       <img
+        //         src={section.src}
+        //         alt=""
+        //         className="mx-auto w-full max-w-7xl object-contain"
+        //       />
+        //     </Link>
+        //   );
+        })}
+      </div>
+        <Collections/>
+        
+      {/* 🔥 TRENDING SECTION */}
+     <Trendingsection/>
+        <div className="flex flex-col gap-10 py-6">
+        {sections.map((section, index) => {
+          if (section.type === "image") {
+         return (
             <Link key={index} href={section.link} className="block">
               <img
                 src={section.src}
@@ -53,18 +71,16 @@ export default function Home() {
               />
             </Link>
           );
+          }
+            
+          
         })}
       </div>
-
-      {/* 🔥 TRENDING SECTION */}
-     <Trendingsection/>
-        <Aboutsection/>
         <UspSection/>
-      
+      <ReviewsSection/>
     </main>
   );
 }
-
 function Carousel({ images }) {
   const [current, setCurrent] = useState(0);
 
@@ -112,3 +128,5 @@ function Carousel({ images }) {
     </div>
   );
 }
+
+export default page
