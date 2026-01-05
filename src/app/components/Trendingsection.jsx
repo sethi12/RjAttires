@@ -61,7 +61,7 @@ function Trendingsection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-10"
+          className="grid grid-cols-2 md:grid-cols-3 gap-10"
         >
           {TrendingSection.map((item, index) => (
             <motion.div key={index} variants={itemVariants}>

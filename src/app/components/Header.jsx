@@ -43,7 +43,9 @@ export default function Header() {
       link: "/contact",
       dropdown: [
         { name: "WhatsApp", link: "/contact/whats-app" },
-        { name: "Track Order", link: "/contact/track-order" },
+        { name: "Track Order", link: "/contact/track-order"},
+        { name: "WholeSale Enquiry", link: "/contact/whole-sale"
+         },
       ],
     },
   ];
@@ -77,7 +79,7 @@ export default function Header() {
       {/* Right Side */}
       <div className="flex items-center gap-4">
         <Link
-          href="https://instagram.com"
+          href="https://www.instagram.com/rjattires?igsh=MTlkbTIzaGY3eGY1MA=="
           target="_blank"
           className="hover:text-gray-300"
         >
@@ -93,7 +95,7 @@ export default function Header() {
         </Link>
 
         <Link
-          href="https://facebook.com"
+          href="https://www.facebook.com/share/1CrUyXqvNs/"
           target="_blank"
           className="hover:text-gray-300"
         >
@@ -106,7 +108,7 @@ export default function Header() {
       <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between z-40">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold">
-        <img src="logo.png" alt="" height={120} width={210}/>
+        <img src="rjlogo.png" alt="" height={10} width={120}/>
         </Link>
 
         {/* Desktop Menu */}

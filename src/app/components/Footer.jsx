@@ -63,19 +63,19 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Quick Links</h4>
 
             <ul className="space-y-3 text-sm text-gray-600">
-              <li>
+              {/* <li>
                 <Link href="/shop" className="hover:underline">
                   Shop
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link href="/about" className="hover:underline">
                   About Us
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/privacy-policy" className="hover:underline">
-                  Privacy Policy
+                  Our Policy
                 </Link>
               </li>
             </ul>

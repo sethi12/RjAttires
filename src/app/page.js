@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import Trendingsection from "./components/Trendingsection";
 import Aboutsection from "./components/Aboutsection";
 import UspSection from "./components/Uspsection";
+import BrandsCrousel from "./components/BrandsCrousel";
+import Collections from "./components/Collections";
 
 
 export default function Home() {
@@ -44,21 +46,27 @@ export default function Home() {
             return <Carousel key={index} images={section.images} />;
           }
 
-          return (
-            <Link key={index} href={section.link} className="block">
-              <img
-                src={section.src}
-                alt=""
-                className="mx-auto w-full max-w-7xl object-contain"
-              />
-            </Link>
-          );
+          // return (
+          //   <Link key={index} href={section.link} className="block">
+          //     <img
+          //       src={section.src}
+          //       alt=""
+          //       className="mx-auto w-full max-w-7xl object-contain"
+          //     />
+          //   </Link>
+          // );
         })}
       </div>
-
-      {/* 🔥 TRENDING SECTION */}
+      {/*About Section*/}
+          <Aboutsection/>
+    
+      {/* Brands */ }
+      <BrandsCrousel/>
+      {/* Collections */}
+          <Collections/>
+        {/* 🔥 TRENDING SECTION */}
      <Trendingsection/>
-        <Aboutsection/>
+      
         <UspSection/>
       
     </main>

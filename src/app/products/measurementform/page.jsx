@@ -1,10 +1,10 @@
-import Wintercollection from '@/app/components/Wintercollection'
+import Measurementform from '@/app/components/Measurementform'
 import React from 'react'
 
 function page() {
   return (
     <div>
-  <Wintercollection/>
+      <Measurementform/>
     </div>
   )
 }

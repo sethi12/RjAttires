@@ -41,7 +41,7 @@ export default function ReviewsSection() {
 
         {/* Heading */}
         <h2 className="text-4xl font-semibold mb-14">
-          Reviews.
+          Reviews
         </h2>
 
         {/* Left Arrow */}
