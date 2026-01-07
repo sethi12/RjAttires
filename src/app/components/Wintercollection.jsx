@@ -200,12 +200,12 @@ function Wintercollection() {
       <div className="mx-auto max-w-7xl px-4">
 
         {/* HEADING */}
-        <div className="flex items-center gap-6 mb-14">
-          <div className="flex-grow border-t border-black" />
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide uppercase whitespace-nowrap">
+        <div className="flex items-center gap-1 mb-10">
+          <div className="flex-grow border-t-2 border-black" />
+          <h2 className="text-2xl font-semibold  md:text-2xl  tracking-wide uppercase whitespace-nowrap">
             Winter Collection
           </h2>
-          <div className="flex-grow border-t border-black" />
+          <div className="flex-grow border-t-2 border-black" />
         </div>
 
         {/* GRID */}
@@ -224,38 +224,41 @@ function Wintercollection() {
 
                   {/* IMAGE */}
                   <div className="relative overflow-hidden bg-gray-50">
-                    <span className="absolute top-4 right-4 bg-white/90 text-xs font-medium px-3 py-1">
+                    {/* <span className="absolute top-4 right-4 bg-white/90 text-xs font-medium px-3 py-1">
                       12 Products
-                    </span>
+                    </span> */}
 
                     <img
                       src={product.mainImage}
                       alt={product.name}
-                      className="w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                      className="w-full  object-contain transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
 
                   {/* INFO */}
                   <div className="mt-4">
-                    <h3 className="text-lg font-semibold flex items-center gap-2">
+                    {/* <h3 className="text-lg font-semibold flex items-center gap-2">
   {brandMap[product.brand]?.name || "Unknown Brand"}
 
   {product.stitchedType === "Unstiched" && (
-    <span className="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded">
+    // <span className="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded">
+    //   Unstitched
+    // </span>
+        <span className="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded">
       Unstitched
     </span>
   )}
-</h3>
+</h3> */}
 
 
                     {/* BRAND NAME */}
                     <p className="text-sm text-gray-600 mt-1">
-                      {brandMap[product.brand]?.name || "Unknown Brand"}
+                      {brandMap[product.brand]?.name || "Unknown Brand"}{product.name}
                     </p>
 
-                    <p className="text-sm text-gray-500 mt-1">
+                    {/* <p className="text-sm text-gray-500 mt-1">
                       ₹{product.price}
-                    </p>
+                    </p> */}
                   </div>
 
                 </div>

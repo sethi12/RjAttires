@@ -105,10 +105,10 @@ export default function Header() {
 
     </div>
   </div>
-      <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between z-40">
+      <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-around p-2  z-40">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold">
-        <img src="rjattirenewlogo.jpg" alt="" height={10} width={120}/>
+        <Link href="/" className="text-xl font-bold justify-start">
+        <img src="rjlogoorignal.png" alt="" height={10} width={120}/>
         </Link>
 
         {/* Desktop Menu */}
@@ -193,15 +193,10 @@ export default function Header() {
           </Link>
         </div> */}
             <div className="flex gap-6 pt-1 ">
-            <Link href="/search">
+            {/* <Link href="/search">
               <Search size={20} />
-            </Link>
-            <Link href="/account">
-              <User size={20} />
-            </Link>
-            <Link href="/cart">
-              <ShoppingCart size={20} />
-            </Link>
+            </Link> */}
+           
           </div>
         {/* Mobile Menu Button */}
         <button
@@ -210,6 +205,12 @@ export default function Header() {
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
+         <Link href="/account">
+              <User size={20} />
+            </Link>
+            <Link href="/cart">
+              <ShoppingCart size={20} />
+            </Link>
       </nav>
 
       {/* Mobile Menu */}
@@ -247,7 +248,7 @@ export default function Header() {
           ))}
 
           {/* Mobile Icons */}
-          <div className="flex gap-6 pt-4 border-t">
+          {/* <div className="flex gap-6 pt-4 border-t">
             <Link href="/search">
               <Search size={20} />
             </Link>
@@ -257,7 +258,7 @@ export default function Header() {
             <Link href="/cart">
               <ShoppingCart size={20} />
             </Link>
-          </div>
+          </div> */}
         </div>
       )}
     </header>

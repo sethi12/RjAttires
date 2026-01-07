@@ -50,12 +50,18 @@ export default function Home() {
 
     <Aboutsection />
     <BrandsCrousel />
-    <Collections />
+
+    {/* Centered Collections */}
+    <div className="flex justify-center">
+      <Collections />
+    </div>
+
     <Trendingsection />
     <UspSection />
 
   </div>
 </main>
+
 
   );
 }

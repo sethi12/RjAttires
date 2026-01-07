@@ -1,36 +1,91 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useMemo } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { getProducts } from "../../../../services/client.service";
+import { getBrands, getProducts } from "../../../../services/client.service";
 
 export default function Page() {
-  const { id } = useParams(); // product id from URL
+//   const { id } = useParams(); // product id from URL
+
+//   const [product, setProduct] = useState(null);
+//     const [brand, setBrand] = useState(null);
+//   const [count, setCount] = useState(1);
+//   const [current, setCurrent] = useState(0);
+//   const [loading, setLoading] = useState(true);
+
+//   /* ---------------- FETCH PRODUCT ---------------- */
+//   useEffect(() => {
+//     const fetchProduct = async () => {
+//       try {
+//         const products = await getProducts();
+//         const found = products.find((p) => p.id === id);
+//         setProduct(found || null);
+//       } catch (err) {
+//         console.error("Failed to fetch product", err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchProduct();
+//   }, [id]);
+//   /* FETCH BRAND */
+//   useEffect(() => {
+//     const fetchBrand = async () => {
+//       try {
+//         const brands = await getBrands();
+//         const currentBrand = brands.find((b) => b.id === id);
+//         setBrand(currentBrand || null);
+//       } catch (error) {
+//         console.error("Failed to fetch brand", error);
+//       }
+//     };
+
+//     fetchBrand();
+//   }, [id]);
+// const brandProducts = useMemo(() => {
+//   if (!products) return [];
+//   return products.filter((p) => p.brand === product?.brand);
+// }, [products, product]);
+
+  const { id } = useParams();
 
   const [product, setProduct] = useState(null);
+  const [brand, setBrand] = useState(null);
   const [count, setCount] = useState(1);
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  /* ---------------- FETCH PRODUCT ---------------- */
   useEffect(() => {
-    const fetchProduct = async () => {
+    const fetchProductAndBrand = async () => {
       try {
         const products = await getProducts();
-        const found = products.find((p) => p.id === id);
-        setProduct(found || null);
+        const foundProduct = products.find((p) => p.id === id);
+
+        if (!foundProduct) {
+          setProduct(null);
+          return;
+        }
+
+        setProduct(foundProduct);
+
+        // fetch brand using product.brand
+        const brands = await getBrands();
+        const foundBrand = brands.find(
+          (b) => b.id === foundProduct.brand
+        );
+        setBrand(foundBrand || null);
       } catch (err) {
-        console.error("Failed to fetch product", err);
+        console.error("Fetch error", err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProduct();
+    fetchProductAndBrand();
   }, [id]);
-
   if (loading) return null;
 
   if (!product) {
@@ -87,16 +142,16 @@ export default function Page() {
 
               {/* Thumbnails */}
               {product.images?.length > 1 && (
-                <div className="mt-4 flex justify-center gap-2">
+                <div className="mt-1 flex justify-center gap-2">
                   {product.images.map((img, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrent(index)}
-                      className={`border p-1 ${
-                        index === current
-                          ? "border-black"
-                          : "border-gray-300"
-                      }`}
+                      // className={`border p-1 ${
+                      //   index === current
+                      //     ? "border-black"
+                      //     : "border-gray-300"
+                      // }`}
                     >
                       <img
                         src={img}
@@ -111,53 +166,66 @@ export default function Page() {
 
           {/* RIGHT – PRODUCT INFO */}
           <div>
-            <h1 className="text-3xl font-semibold mb-3">
-              {product.name}
-            </h1>
+<h1 className="text-[20px] font-[400] mb-3 font-poppins">
+  {brand?.name} {product.name}
+</h1>
+
 
             {/* Stars */}
             <div className="flex gap-1 mb-3">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={18} className="text-red-600" />
+                <Star key={i} size={16} className="text-[#7A0C2E]" />
               ))}
             </div>
 
             {/* Price */}
-            <p className="text-2xl text-red-600 font-semibold mb-1">
-              ₹{product.price}
-            </p>
-            <p className="text-sm text-gray-600 mb-6">
+           <p className="text-[18px] text-red-600 font-semibold mb-1">
+  ₹{Number(product.price).toLocaleString("en-IN", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}
+</p>
+
+            <p className="text-sm font-semibold text-black mb-2">
               MRP incl. of all taxes
             </p>
 
             {/* Cart */}
-            <div className="flex items-center gap-4 mb-6">
-              <button className="bg-black text-white px-8 py-3 uppercase tracking-wide">
-                Add to Cart
-              </button>
+         <div className="flex items-center gap-4 mb-6">
 
-              <div className="flex items-center border">
-                <button
-                  className="px-3 text-lg"
-                  onClick={() =>
-                    setCount((prev) => Math.max(1, prev - 1))
-                  }
-                >
-                  −
-                </button>
+  {/* ADD TO CART */}
+  <button className="bg-black text-white px-8 py-3 uppercase tracking-wide">
+    Add to Cart
+  </button>
 
-                <span className="px-4 select-none">
-                  {count}
-                </span>
+  {/* QUANTITY BOX */}
+  <div className="flex items-center border border-gray-300">
 
-                <button
-                  className="px-3 text-lg"
-                  onClick={() => setCount((prev) => prev + 1)}
-                >
-                  +
-                </button>
-              </div>
-            </div>
+    {/* COUNT */}
+    <div className="px-6 py-3 text-sm font-medium border-r border-gray-300 select-none">
+      {count}
+    </div>
+
+    {/* ARROWS */}
+    <div className="flex flex-col">
+      <button
+        className="px-3 py-1 text-xs hover:bg-gray-100 border-b border-gray-300"
+        onClick={() => setCount((prev) => prev + 1)}
+      >
+        ▲
+      </button>
+
+      <button
+        className="px-3 py-1 text-xs hover:bg-gray-100"
+        onClick={() => setCount((prev) => Math.max(1, prev - 1))}
+      >
+        ▼
+      </button>
+    </div>
+
+  </div>
+</div>
+
 
             {/* WhatsApp & Measurement */}
            <div className="flex flex-row flex-wrap items-center gap-4 mb-8">
@@ -203,9 +271,9 @@ export default function Page() {
 </div>
 
             {/* Meta */}
-            <div className="text-sm text-gray-700 space-y-2">
-              <p><strong>SKU:</strong> {product.id}</p>
-              <p><strong>Category:</strong> {product.stitchedType}</p>
+            <div className="text-sm font-[200] text-black space-y-2">
+              <p>SKU: <span className="text-gray-700 font-[200]">{product.id}</span></p>
+              <p>Category: {product.stitchedType}</p>
             </div>
 
             {/* Offers */}
@@ -213,12 +281,15 @@ export default function Page() {
               <h4 className="font-semibold mb-2">
                 AVAILABLE OFFERS:
               </h4>
-              <p>▶ 10% OFF For New Users</p>
+              <p className="text-xs">▶ 10% OFF For New Users</p>
             </div>
 
             {/* Stock */}
-            <p className="mt-4 font-medium text-green-600">
-              ✔ In Stock
+            <p className="mt-4 font-medium text-gray-600">
+           <span className="inline-flex items-center justify-center w-4 h-4 text-[10px] bg-black text-white rounded-full">
+  ✓
+</span>
+<span className="ml-1">   in stock</span>
             </p>
 
             {/* Trust Badges */}

@@ -50,7 +50,7 @@ function Trendingsection() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl font-semibold mb-10 text-center"
+          className="text-3xl font-[400] mb-10 text-center"
         >
           Trending Products
         </motion.h2>
@@ -76,20 +76,18 @@ function Trendingsection() {
                 </div>
 
                 {/* Info */}
-                <div className="mt-4 flex justify-between items-start text-sm">
+                <div className="mt-2  justify-between items-start text-sm">
                   {/* Left */}
                   <div>
-                    <h3 className="font-semibold tracking-wide uppercase">
+                    <h3 className="text-1xl font-[500] tracking-wide uppercase text-center">
                       {item.name}
                     </h3>
                   </div>
 
                   {/* Right */}
-                  <div className="text-right text-gray-500">
-                    <p className="text-xs uppercase">Starting Rs:</p>
-                    <p className="text-sm font-medium text-gray-700">
-                      {item.price}.00
-                    </p>
+                  <div className=" flex  text-gray-500 ml-8">
+                    <p className="text-xs uppercase">Starting Rs: {item.price}.00</p>
+                   
                   </div>
                 </div>
               </Link>

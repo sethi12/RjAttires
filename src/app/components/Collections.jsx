@@ -26,7 +26,8 @@ function Collections() {
   ];
 
   return (
-    <section className="py-8">
+<section className="px-10 py-0 md:px-0 md:py-10">
+
       <div className="mx-auto max-w-7xl px-4">
         
         <div className="flex flex-wrap gap-6">
@@ -34,7 +35,7 @@ function Collections() {
             <div
               key={index}
               className="
-                relative group overflow-hidden rounded-xl
+                relative group overflow-hidden 
                 w-97.5 h-47.5 gap-5
                 cursor-pointer
               "
@@ -55,7 +56,7 @@ function Collections() {
 
               {/* Content on image */}
               <div className="relative z-10 h-full w-full p-4 flex flex-col justify-center">
-                <h3 className="text-xl font-bold text-black leading-tight">
+                <h3 className="text-xl  text-black leading-tight">
                   {item.title}
                 </h3>
 
@@ -68,9 +69,10 @@ function Collections() {
                   className="
                     inline-block w-fit
                     bg-black text-white
-                    px-3 py-3
-                    text-[10px] font-bold tracking-widest
-                    rounded
+                    px-5.5 py-3
+                    h-10
+                    text-[10px] font-semibold  tracking-widest
+                    
                     transition
                     
                   "

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
+
 import Link from "next/link";
 import { getBrands, getProducts } from "../../../../../services/client.service";
 
@@ -64,12 +65,12 @@ function Page() {
       <div className="mx-auto max-w-7xl px-4">
  
         {/* HEADING */}
-        <div className="flex items-center gap-6 mb-14">
-          <div className="flex-grow border-t border-black" />
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide uppercase whitespace-nowrap text-center">
-            {brand.name}
+        <div className="flex items-center gap-1 mb-8">
+          <div className="flex-grow border-t-2 border-black" />
+          <h2 className="text-[22px] leading-[25px] font-semibold md:text-3xl  tracking-wide uppercase whitespace-nowrap text-center">
+           HUSSAIN REHAR KARANDI <br />UNSTICHED 25
           </h2>
-          <div className="flex-grow border-t border-black" />
+          <div className="flex-grow border-t-2 border-black" />
         </div>
 
         {/* PRODUCT GRID */}
@@ -96,30 +97,30 @@ function Page() {
                   </div>
 
                   {/* INFO */}
-                  <div className="mt-4">
-                    <h3 className="text-xl font-semibold leading-snug">
-                      {item.name}
+                  <div className="mt-1 ml-3">
+                    <h3 className="text-xs  leading-snug">
+                     {brand.name} {item.name}
                     </h3>
 
-                    <p className="text-ml text-red-400 mt-2">
+                    <p className="text-ml text-red-400 ">
                       ₹{item.price}
                     </p>
 
                     {/* ADD TO CART */}
                     <button
                       className="
-                        mt-4
+                        mt-1
                         w-30
                         bg-black
                         text-white
-                        py-3
+                        py-2
                         text-sm
                         tracking-wide
                         hover:bg-gray-800
                         transition
                       "
                     >
-                      ADD TO CART
+                      ADD TO CART 
                     </button>
                   </div>
 </div>
