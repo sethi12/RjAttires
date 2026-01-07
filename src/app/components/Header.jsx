@@ -108,7 +108,7 @@ export default function Header() {
       <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between z-40">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold">
-        <img src="rjlogo.png" alt="" height={10} width={120}/>
+        <img src="rjattirenewlogo.jpg" alt="" height={10} width={120}/>
         </Link>
 
         {/* Desktop Menu */}
@@ -178,7 +178,7 @@ export default function Header() {
         </ul>
 
         {/* Icons */}
-        <div className="hidden md:flex items-center gap-5">
+        {/* <div className="hidden md:flex items-center gap-5">
           <Link href="/search">
             <Search size={20} />
           </Link>
@@ -191,8 +191,18 @@ export default function Header() {
               0
             </span>
           </Link>
-        </div>
-
+        </div> */}
+            <div className="flex gap-6 pt-1 ">
+            <Link href="/search">
+              <Search size={20} />
+            </Link>
+            <Link href="/account">
+              <User size={20} />
+            </Link>
+            <Link href="/cart">
+              <ShoppingCart size={20} />
+            </Link>
+          </div>
         {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen(!open)}

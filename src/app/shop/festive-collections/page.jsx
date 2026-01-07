@@ -1,9 +1,10 @@
+import FestiveCollection from '@/app/components/FestiveCollection'
 import React from 'react'
 
 function page() {
   return (
     <div>
-      Festive collection
+<FestiveCollection/>
     </div>
   )
 }

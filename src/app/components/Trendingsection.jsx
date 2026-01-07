@@ -44,7 +44,7 @@ function Trendingsection() {
     },
   };
   return (
-   <section className="py-16 overflow-hidden">
+   <section className="py-6 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4">
         <motion.h2 
           initial={{ opacity: 0, y: -20 }}

@@ -1,18 +1,40 @@
+// import "./globals.css";
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
+
+// export default function RootLayout({ children }) {
+//   return (
+//     <html lang="en">
+//       <body className="antialiased flex flex-col min-h-screen">
+//         <Header />
+        
+//         {/* Page Content */}
+//         <main className="flex-grow">
+//           {children}
+//         </main>
+
+//         <Footer />
+//       </body>
+//     </html>
+//   );
+// }
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="antialiased flex flex-col min-h-screen">
+      <body className={`${poppins.className} antialiased`}>
         <Header />
-        
-        {/* Page Content */}
-        <main className="flex-grow">
-          {children}
-        </main>
-
+        {children}
         <Footer />
       </body>
     </html>

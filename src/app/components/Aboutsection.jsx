@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 function Aboutsection() {
   return (
-    <section className="py-16 overflow-hidden"> {/* Added overflow-hidden to prevent horizontal scroll during animation */}
+    <section className="py-1 overflow-hidden"> {/* Added overflow-hidden to prevent horizontal scroll during animation */}
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           

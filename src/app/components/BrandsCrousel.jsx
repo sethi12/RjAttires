@@ -2,20 +2,35 @@
 
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef,useEffect } from "react";
+import { useRef,useEffect ,useState} from "react";
+import { getBrands } from "../../../services/client.service";
 
 function BrandsCrousel() {
-  const brands = [
-    { name: "Qalamkar", image: "/qalamakar.png" },
-    { name: "Gul Ahmed", image: "/kulahmed.png" },
-    { name: "Zaha", image: "/zaha.png" },
-    { name: "Maria B", image: "/maria.jpg" },
-    { name: "crimson", image: "/crimson.png" },
-    {name:"noor",image:"/noorlogo.png"},
-    {name:"rangrasiya",image:"/rangrasiya.png"},
-    {name:"ZaraShahJhan",image:"/ZaraShahjhan.png"}
-  ];
+  // const brands = [
+  //   { name: "Qalamkar", image: "/qalamakar.png" },
+  //   { name: "Gul Ahmed", image: "/kulahmed.png" },
+  //   { name: "Zaha", image: "/zaha.png" },
+  //   { name: "Maria B", image: "/maria.jpg" },
+  //   { name: "crimson", image: "/crimson.png" },
+  //   {name:"noor",image:"/noorlogo.png"},
+  //   {name:"rangrasiya",image:"/rangrasiya.png"},
+  //   {name:"ZaraShahJhan",image:"/ZaraShahjhan.png"}
+  // ];
 
+   const [brands, setBrands] = useState([]);
+     /* FETCH BRANDS */
+    useEffect(() => {
+      fetchBrands();
+    }, []);
+  
+    const fetchBrands = async () => {
+      try {
+        const data = await getBrands();
+        setBrands(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
     const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -56,7 +71,7 @@ function BrandsCrousel() {
   }, []);
 
   return (
-    <section className="py-16">
+    <section className="py-2">
       <div className="mx-auto max-w-7xl px-4">
 
         {/* Heading */}

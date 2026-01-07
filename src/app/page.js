@@ -38,38 +38,25 @@ export default function Home() {
   ];
 
   return (
-    <main className="w-full">
-      {/* Top Sections */}
-      <div className="flex flex-col gap-10 py-6">
-        {sections.map((section, index) => {
-          if (section.type === "carousel") {
-            return <Carousel key={index} images={section.images} />;
-          }
+  <main className="w-full">
+  <div className="flex flex-col gap-6 pt-1">
 
-          // return (
-          //   <Link key={index} href={section.link} className="block">
-          //     <img
-          //       src={section.src}
-          //       alt=""
-          //       className="mx-auto w-full max-w-7xl object-contain"
-          //     />
-          //   </Link>
-          // );
-        })}
-      </div>
-      {/*About Section*/}
-          <Aboutsection/>
-    
-      {/* Brands */ }
-      <BrandsCrousel/>
-      {/* Collections */}
-          <Collections/>
-        {/* 🔥 TRENDING SECTION */}
-     <Trendingsection/>
-      
-        <UspSection/>
-      
-    </main>
+    {sections.map((section, index) => {
+      if (section.type === "carousel") {
+        return <Carousel key={index} images={section.images} />;
+      }
+      return null;
+    })}
+
+    <Aboutsection />
+    <BrandsCrousel />
+    <Collections />
+    <Trendingsection />
+    <UspSection />
+
+  </div>
+</main>
+
   );
 }
 

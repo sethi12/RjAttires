@@ -35,7 +35,7 @@ function Page() {
   ];
 
   return (
-    <section className="py-16">
+    <section className="py-6">
       <div className="mx-auto max-w-7xl px-4">
 
         {/* Heading */}

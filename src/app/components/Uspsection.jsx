@@ -13,7 +13,7 @@ export default function UspSection() {
   };
 
   return (
-    <section className="py-16 overflow-hidden">
+    <section className="py-7 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           

@@ -1,21 +1,38 @@
+"use client"
 import React from "react";
-
+import { useState,useEffect } from "react";
+import { getBrands } from "../../../../services/client.service";
+import Link from "next/link";
 function Page() {
-  const brands = [
-    {
-      name: "Qalamkar",
-      image: "/qalamakar.png",
-    },
-    {
-      name: "Gul Ahmed",
-      image: "/kulahmed.png",
-    },
-    {
-      name: "Zaha",
-      image: "/zaha.png",
-    },
+   const [brands, setBrands] = useState([]);
+   /* FETCH BRANDS */
+  useEffect(() => {
+    fetchBrands();
+  }, []);
+
+  const fetchBrands = async () => {
+    try {
+      const data = await getBrands();
+      setBrands(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  // const brands = [
+  //   {
+  //     name: "Qalamkar",
+  //     image: "/qalamakar.png",
+  //   },
+  //   {
+  //     name: "Gul Ahmed",
+  //     image: "/kulahmed.png",
+  //   },
+  //   {
+  //     name: "Zaha",
+  //     image: "/zaha.png",
+  //   },
     
-  ];
+  // ];
 
   return (
     <section className="py-16">
@@ -33,6 +50,9 @@ function Page() {
         {/* Brands Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 items-center justify-center">
           {brands.map((brand, index) => (
+           <Link
+           key={index}
+           href={`/shop/brands/${brand.id}`}>
             <div
               key={index}
               className="flex flex-col items-center text-center"
@@ -46,6 +66,7 @@ function Page() {
                 {brand.name}
               </h3>
             </div>
+           </Link>
           ))}
         </div>
 
