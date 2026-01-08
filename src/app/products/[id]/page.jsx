@@ -5,53 +5,11 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getBrands, getProducts } from "../../../../services/client.service";
-
+import { useCart } from "@/app/context/CartContext";
 export default function Page() {
-//   const { id } = useParams(); // product id from URL
-
-//   const [product, setProduct] = useState(null);
-//     const [brand, setBrand] = useState(null);
-//   const [count, setCount] = useState(1);
-//   const [current, setCurrent] = useState(0);
-//   const [loading, setLoading] = useState(true);
-
-//   /* ---------------- FETCH PRODUCT ---------------- */
-//   useEffect(() => {
-//     const fetchProduct = async () => {
-//       try {
-//         const products = await getProducts();
-//         const found = products.find((p) => p.id === id);
-//         setProduct(found || null);
-//       } catch (err) {
-//         console.error("Failed to fetch product", err);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchProduct();
-//   }, [id]);
-//   /* FETCH BRAND */
-//   useEffect(() => {
-//     const fetchBrand = async () => {
-//       try {
-//         const brands = await getBrands();
-//         const currentBrand = brands.find((b) => b.id === id);
-//         setBrand(currentBrand || null);
-//       } catch (error) {
-//         console.error("Failed to fetch brand", error);
-//       }
-//     };
-
-//     fetchBrand();
-//   }, [id]);
-// const brandProducts = useMemo(() => {
-//   if (!products) return [];
-//   return products.filter((p) => p.brand === product?.brand);
-// }, [products, product]);
 
   const { id } = useParams();
-
+  const {addToCart}= useCart();
   const [product, setProduct] = useState(null);
   const [brand, setBrand] = useState(null);
   const [count, setCount] = useState(1);
@@ -194,9 +152,13 @@ export default function Page() {
          <div className="flex items-center gap-4 mb-6">
 
   {/* ADD TO CART */}
-  <button className="bg-black text-white px-8 py-3 uppercase tracking-wide">
-    Add to Cart
-  </button>
+<button
+  onClick={() => addToCart(product)}
+  className="bg-black text-white px-8 py-3 uppercase"
+>
+  Add to Cart
+</button>
+
 
   {/* QUANTITY BOX */}
   <div className="flex items-center border border-gray-300">

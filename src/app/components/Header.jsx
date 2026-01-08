@@ -7,6 +7,7 @@ import { Search, User, ShoppingCart, ChevronDown, Menu, X , Mail,
   Instagram,
   Facebook,
   Globe,} from "lucide-react";
+import CartIcon from "./CartIcon";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -208,9 +209,10 @@ export default function Header() {
          <Link href="/account">
               <User size={20} />
             </Link>
-            <Link href="/cart">
+            {/* <Link href="/cart">
               <ShoppingCart size={20} />
-            </Link>
+            </Link> */}
+            <CartIcon/>
       </nav>
 
       {/* Mobile Menu */}
