@@ -15,7 +15,13 @@ export const getBrands = async () => {
 
   return res.json();
 };
-
+export const getCategories = async()=>{
+  const res = await fetch(`${BASE_URL}client/categories`)
+      if(!res.ok){
+        throw new Error("Failed to fetch Categories")
+      }
+      return res.json();
+}
 export const getProducts = async()=>{
  const res = await fetch(`${BASE_URL}client/products`);
 

@@ -26,10 +26,10 @@ export default function Footer() {
              
             </div>
 
-            <p className="text-gray-600 text-sm leading-relaxed">
+            {/* <p className="text-gray-600 text-sm leading-relaxed">
               Rj Attires is your go-to destination for premium clothing
               that blends comfort, quality, and trendsetting designs.
-            </p>
+            </p> */}
           </div>
 
           {/* Contact Us */}
@@ -86,17 +86,46 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Social Media Links</h4>
 
             <div className="flex gap-4">
-              <Link href="#" className="hover:opacity-70">
-                <Instagram />
+              <Link           href="https://www.instagram.com/rjattires?igsh=MTlkbTIzaGY3eGY1MA=="
+          target="_blank" className="hover:opacity-70">
+                <img src="/instafooter.jpg" alt=""  className="h-5 object-contain rounded-4xl" />
               </Link>
-              <Link href="#" className="hover:opacity-70">
-                <Facebook />
+              <Link           href="https://google.com"
+          target="_blank" className="hover:opacity-70">
+               <img src="fbfooter.jpg" alt=""   className="h-5 object-contain rounded-3xl"/>
               </Link>
-              <Link href="#" className="hover:opacity-70">
-                <Globe />
+              <Link           href="https://www.facebook.com/share/1CrUyXqvNs/"
+          target="_blank"className="hover:opacity-70">
+                <img src="googlefooter.jpg" alt=""   className="h-5 object-contain rounded-3xl" />
               </Link>
             </div>
           </div>
+                        <div>
+  <h4 className="font-semibold mb-4">Payment Methods</h4>
+
+  <div className="flex items-center gap-4 flex-wrap">
+    <img
+      src="/visa.jpeg"
+      alt="Visa"
+      className="h-5 object-contain"
+    />
+    <img
+      src="/paytm.png"
+      alt="Paytm"
+      className="h-5 object-contain"
+    />
+    <img
+      src="/mastercard.png"
+      alt="Mastercard"
+      className="h-5 object-contain"
+    />
+    <img
+      src="/americanexpress.png"
+      alt="American Express"
+      className="h-5 object-contain"
+    />
+  </div>
+</div>
 
         </div>
       </div>

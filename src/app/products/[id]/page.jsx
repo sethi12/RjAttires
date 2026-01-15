@@ -4,7 +4,7 @@ import React, { useEffect, useState,useMemo } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { getBrands, getProducts } from "../../../../services/client.service";
+import { getBrands, getCategories, getProducts } from "../../../../services/client.service";
 import { useCart } from "@/app/context/CartContext";
 export default function Page() {
 
@@ -15,47 +15,86 @@ export default function Page() {
   const [count, setCount] = useState(1);
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState(null);
 
+  // useEffect(() => {
+  //   const fetchProductAndBrand = async () => {
+  //     try {
+  //       const products = await getProducts();
+  //       const foundProduct = products.find((p) => p.id === id);
+
+  //       if (!foundProduct) {
+  //         setProduct(null);
+  //         return;
+  //       }
+
+  //       setProduct(foundProduct);
+
+  //       // fetch brand using product.brand
+  //       const brands = await getBrands();
+  //       const foundBrand = brands.find(
+  //         (b) => b.id === foundProduct.brand
+  //       );
+  //       setBrand(foundBrand || null);
+  //     } catch (err) {
+  //       console.error("Fetch error", err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchProductAndBrand();
+  // }, [id]);
   useEffect(() => {
-    const fetchProductAndBrand = async () => {
-      try {
-        const products = await getProducts();
-        const foundProduct = products.find((p) => p.id === id);
+  const fetchProductBrandAndCategory = async () => {
+    try {
+      const products = await getProducts();
+      const foundProduct = products.find((p) => p.id === id);
 
-        if (!foundProduct) {
-          setProduct(null);
-          return;
-        }
-
-        setProduct(foundProduct);
-
-        // fetch brand using product.brand
-        const brands = await getBrands();
-        const foundBrand = brands.find(
-          (b) => b.id === foundProduct.brand
-        );
-        setBrand(foundBrand || null);
-      } catch (err) {
-        console.error("Fetch error", err);
-      } finally {
-        setLoading(false);
+      if (!foundProduct) {
+        setProduct(null);
+        return;
       }
-    };
 
-    fetchProductAndBrand();
-  }, [id]);
+      setProduct(foundProduct);
+
+      /* -------- FETCH BRAND -------- */
+      const brands = await getBrands();
+      const foundBrand = brands.find(
+        (b) => b.id === foundProduct.brand
+      );
+      setBrand(foundBrand || null);
+
+      /* -------- FETCH CATEGORY -------- */
+      if (foundProduct.category) {
+        const categories = await getCategories();
+        const foundCategory = categories.find(
+          (c) => c.id === foundProduct.category
+        );
+        setCategory(foundCategory || null);
+      }
+    } catch (err) {
+      console.error("Fetch error", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (id) fetchProductBrandAndCategory();
+}, [id]);
+
   if (loading) return null;
 
   if (!product) {
     return (
-      <div className="py-20 text-center text-gray-500">
+      <div className="py-10 text-center text-gray-500">
         Product not found
       </div>
     );
   }
 
   return (
-    <section className="py-16">
+    <section className="py-1 ml-2 mr-2">
       <div className="mx-auto max-w-7xl px-1">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-1">
 
@@ -125,7 +164,7 @@ export default function Page() {
           {/* RIGHT – PRODUCT INFO */}
           <div>
 <h1 className="text-[20px] font-[400] mb-3 font-poppins">
-  {brand?.name} {product.name}
+  {brand?.name} {category?.name} |{product.name}
 </h1>
 
 
@@ -190,7 +229,7 @@ export default function Page() {
 
 
             {/* WhatsApp & Measurement */}
-           <div className="flex flex-row flex-wrap items-center gap-4 mb-8">
+           <div className="flex flex-row flex-wrap items-center gap-1 mb-8">
   {/* WhatsApp Button */}
   <button
     className="
@@ -264,7 +303,7 @@ export default function Page() {
         </div>
       </div>
       {/* DESCRIPTION & REVIEWS */}
-<section className="mt-20 border-t">
+<section className="mt-10 ">
   <div className="mx-auto max-w-5xl px-4">
 
     {/* TABS */}
@@ -298,7 +337,7 @@ export default function Page() {
     </div>
 
     {/* CONTENT */}
-    <div className="py-12 mx-auto max-w-3xl">
+    <div className="py-1 mx-auto max-w-3xl ml-5">
 
       {/* COD */}
       <p className="text-xs uppercase tracking-wider text-gray-400 mb-6">

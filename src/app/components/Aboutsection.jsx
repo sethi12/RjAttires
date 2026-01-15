@@ -5,7 +5,7 @@ function Aboutsection() {
   return (
     <section className="py-1 overflow-hidden"> {/* Added overflow-hidden to prevent horizontal scroll during animation */}
       <div className="mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="gap-6 items-center">
           
           {/* Left Image - Slides in from Left */}
           <motion.div 
@@ -15,11 +15,11 @@ function Aboutsection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full"
           >
-            <img
+            {/* <img
               src="aboutimage.png" 
               alt="About RJ Attires"
               className="w-full object-contain rounded-tl-[150px] rounded-br-[150px]"
-            />
+            /> */}
           </motion.div>
 
           {/* Right Content - Slides in from Right */}
@@ -29,7 +29,7 @@ function Aboutsection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
-            <h2 className="text-3xl font-semibold mb-6">
+            <h2 className="text-3xl font-semibold mb-4 text-center">
               About RJ Attires
             </h2>
 
@@ -48,11 +48,11 @@ function Aboutsection() {
             accessible to every woman and girl who wishes to embrace her culture with confidence and style.
             </p>
 
-            <p className="text-gray-600 leading-relaxed">
+            {/* <p className="text-gray-600 leading-relaxed">
               At Rj Attires, our customers are at the heart of everything we do. We continuously
                strive to provide an exceptional shopping experience from browsing our latest
                 collections to receiving your perfectly packed order at your doorstep.
-            </p>
+            </p> */}
           </motion.div>
 
         </div>

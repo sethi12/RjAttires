@@ -1,30 +1,49 @@
+// "use client";
+
+// import { useState } from "react";
+// import { ShoppingCart } from "lucide-react";
+// import CartDrawyer from "./CartDrawyer";
+
+// function CartIcon() {
+//   const [open, setOpen] = useState(false);
+
+//   return (
+//     <>
+//       {/* CART ICON */}
+//       <button
+//         onClick={() => setOpen(true)}
+//         className="relative"
+//         aria-label="Open cart"
+//       >
+//         <ShoppingCart size={20} />
+//       </button>
+
+//       {/* CART DRAWER */}
+//       <CartDrawyer
+//         open={open}
+//         onClose={() => setOpen(false)}
+//       />
+//     </>
+//   );
+// }
+
+// export default CartIcon;
+
 "use client";
 
-import { useState } from "react";
 import { ShoppingCart } from "lucide-react";
-import CartDrawyer from "./CartDrawyer";
+import { useCart } from "../context/CartContext";
 
-function CartIcon() {
-  const [open, setOpen] = useState(false);
+export default function CartIcon() {
+  const { setIsOpen } = useCart();
 
   return (
-    <>
-      {/* CART ICON */}
-      <button
-        onClick={() => setOpen(true)}
-        className="relative"
-        aria-label="Open cart"
-      >
-        <ShoppingCart size={20} />
-      </button>
-
-      {/* CART DRAWER */}
-      <CartDrawyer
-        open={open}
-        onClose={() => setOpen(false)}
-      />
-    </>
+    <button
+      onClick={() => setIsOpen(true)}
+      className="relative"
+      aria-label="Open cart"
+    >
+      <ShoppingCart size={20} />
+    </button>
   );
 }
-
-export default CartIcon;

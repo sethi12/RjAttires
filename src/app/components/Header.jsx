@@ -2,17 +2,20 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Search, User, ShoppingCart, ChevronDown, Menu, X , Mail,
+import { Search, User,  ChevronDown, Menu, X , Mail,
   Phone,
   Instagram,
   Facebook,
   Globe,} from "lucide-react";
 import CartIcon from "./CartIcon";
+import { useCart } from "../context/CartContext";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-
+   const {opencart}= useCart();
   const menuList = [
     {
       name: "About Us",
@@ -52,7 +55,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-full border-b bg-white z-40">
+    <header className="w-full  bg-white z-40">
       {/* Top Info Bar */}
   <div className="bg-black text-white text-sm">
     <div className="mx-auto max-w-7xl px-6 py-2 flex justify-between items-center">
@@ -78,21 +81,23 @@ export default function Header() {
       </div>
 
       {/* Right Side */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center ">
         <Link
           href="https://www.instagram.com/rjattires?igsh=MTlkbTIzaGY3eGY1MA=="
           target="_blank"
           className="hover:text-gray-300"
         >
-          <Instagram size={16} />
+          {/* <Instagram size={16} /> */}
+             <img src="/instafooter.jpg" alt=""  className="h-4.5 object-contain rounded-4xl" />
         </Link>
 
         <Link
           href="https://google.com"
           target="_blank"
-          className="hover:text-gray-300"
+          className="hover:text-gray-300 gap-3"
         >
-          <Globe size={16} />
+          {/* <Globe size={16} /> */}
+           <img src="fbfooter.jpg" alt=""   className="h-6 object-contain rounded-3xl"/>
         </Link>
 
         <Link
@@ -100,169 +105,197 @@ export default function Header() {
           target="_blank"
           className="hover:text-gray-300"
         >
-          <Facebook size={16} />
+          {/* <Facebook size={16} /> */}
+            <img src="googlefooter.jpg" alt=""   className="h-4 object-contain rounded-3xl" />
         </Link>
       </div>
 
     </div>
   </div>
-      <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-around p-2  z-40">
-        {/* Logo */}
-        <Link href="/" className="text-xl font-bold justify-start">
-        <img src="rjlogoorignal.png" alt="" height={10} width={120}/>
-        </Link>
+<nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between z-40">
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-8">
-          {menuList.map((item, index) => (
-            <li key={index} className="relative group">
-  <Link
-    href={item.link}
-    className={`flex items-center gap-1 text-sm font-medium ${
-      item.name === "Sale"
-        ? "text-red-500"
-        : "text-gray-700 hover:text-black"
-    }`}
-  >
-    {item.name}
-    {item.dropdown && <ChevronDown size={14} />}
+  {/* LEFT – LOGO */}
+  <Link href="/" className="flex items-center">
+    <img
+      src="/rjlogoorignal.png"
+      alt="RJ Attires"
+      className="h-auto w-[120px]"
+    />
   </Link>
 
-  {item.dropdown && (
- <ul
-    className="
-      absolute left-0 top-full
-      mt-3
-      w-64
-      z-50
-      border border-gray-200
-      bg-white
-      shadow-sm
-      opacity-0
-      invisible
-      group-hover:visible
-      group-hover:opacity-100
-      transition-opacity
-      duration-150
-      before:absolute
-      before:-top-4
-      before:left-0
-      before:h-4
-      before:w-full
-      before:content-['']
-    "
-  >
-    {item.dropdown.map((subItem, subIndex) => (
-      <li key={subIndex}>
-        <Link
-          href={subItem.link}
-          className="
-            block
-            px-8
-            py-5
-            text-sm
-            uppercase
-            tracking-wide
-            text-black
-            hover:text-black
-          "
-        >
-          {subItem.name}
-        </Link>
-      </li>
+  {/* RIGHT – MENU + ICONS */}
+  <div className="flex items-center gap-6">
+
+    {/* DESKTOP MENU */}
+    <ul className="hidden md:flex items-center gap-8">
+      {menuList.map((item, index) => (
+        <li key={index} className="relative group">
+          <Link
+            href={item.link}
+            className={`flex items-center gap-1 text-sm font-medium ${
+              item.name === "Sale"
+                ? "text-red-500"
+                : "text-gray-700 hover:text-black"
+            }`}
+          >
+            {item.name}
+            {item.dropdown && <ChevronDown size={14} />}
+          </Link>
+
+          {item.dropdown && (
+            <ul
+              className="
+                absolute right-0 top-full mt-3 w-64 z-50
+                border border-gray-200 bg-white shadow-sm
+                opacity-0 invisible
+                group-hover:visible group-hover:opacity-100
+                transition-opacity 
+              "
+            >
+              {item.dropdown.map((subItem, subIndex) => (
+                <li key={subIndex}>
+                  <Link
+                    href={subItem.link}
+                    className="block px-8 py-5 text-sm uppercase tracking-wide text-black"
+                  >
+                    {subItem.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
       ))}
     </ul>
-  )}
-</li>
+    <button
+      onClick={() => setOpen(!open)}
+      className="md:hidden"
+    >
+      {open ? <X size={24} /> : <Menu size={24} />}
+    </button>
+    {/* ICONS */}
+    <Link href="/account">
+      <User size={20} />
+    </Link>
 
-          ))}
-        </ul>
+    <CartIcon/>
 
-        {/* Icons */}
-        {/* <div className="hidden md:flex items-center gap-5">
-          <Link href="/search">
-            <Search size={20} />
-          </Link>
-          <Link href="/account">
-            <User size={20} />
-          </Link>
-          <Link href="/cart" className="relative">
-            <ShoppingCart size={20} />
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-              0
-            </span>
-          </Link>
-        </div> */}
-            <div className="flex gap-6 pt-1 ">
-            {/* <Link href="/search">
-              <Search size={20} />
-            </Link> */}
-           
-          </div>
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-         <Link href="/account">
-              <User size={20} />
-            </Link>
-            {/* <Link href="/cart">
-              <ShoppingCart size={20} />
-            </Link> */}
-            <CartIcon/>
-      </nav>
+    {/* MOBILE MENU BUTTON */}
+
+  </div>
+</nav>
+
+{/* MOBILE SEARCH BAR */}
+<div className="md:hidden px-4 pb-4">
+  <div className="relative">
+    <input
+      type="text"
+      placeholder="Search"
+      className="
+        w-full
+        border
+        border-gray-300
+        rounded-sm
+        py-2.5
+        pl-4
+        pr-12
+        text-sm
+        focus:outline-none
+      "
+    />
+
+    <button
+      className="
+        absolute right-0 top-0 h-full
+        px-4
+        bg-gray-100
+        border-l
+        border-gray-300
+        flex items-center justify-center
+      "
+    >
+      <Search size={18} className="text-gray-600" />
+    </button>
+  </div>
+</div>
 
       {/* Mobile Menu */}
-      {open && (
-        <div className="md:hidden border-t bg-white px-6 py-4 space-y-4">
-          {menuList.map((item, index) => (
-            <div key={index}>
-              <div
-                className="flex justify-between items-center text-sm font-medium"
-                onClick={() =>
+<AnimatePresence>
+  {open && (
+    <motion.div
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{ duration: 0.25, ease: "easeInOut" }}
+      className="md:hidden overflow-hidden border-t bg-white px-6"
+    >
+      <div className="py-4 space-y-4">
+        {menuList.map((item, index) => (
+          <div key={index}>
+            {/* MAIN ITEM */}
+            <div
+              className="flex justify-between items-center text-sm font-medium"
+              onClick={() => {
+                if (item.dropdown) {
                   setActiveDropdown(
                     activeDropdown === index ? null : index
-                  )
+                  );
+                } else {
+                  setOpen(false); // ✅ CLOSE MENU
+                  setActiveDropdown(null);
                 }
+              }}
+            >
+              <Link
+                href={item.link}
+                onClick={() => setOpen(false)}
               >
-                <Link href={item.link}>{item.name}</Link>
-                {item.dropdown && <ChevronDown size={16} />}
-              </div>
+                {item.name}
+              </Link>
 
-              {/* Mobile Dropdown */}
+              {item.dropdown && <ChevronDown size={16} />}
+            </div>
+
+            {/* DROPDOWN */}
+            <AnimatePresence>
               {item.dropdown && activeDropdown === index && (
-                <div className="mt-2 ml-4 space-y-2">
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="mt-2 ml-4 space-y-2 overflow-hidden"
+                >
                   {item.dropdown.map((subItem, subIndex) => (
                     <Link
                       key={subIndex}
                       href={subItem.link}
                       className="block text-sm text-gray-600"
+                      onClick={() => {
+                        setOpen(false);
+                        setActiveDropdown(null);
+                      }}
                     >
                       {subItem.name}
                     </Link>
                   ))}
-                </div>
+                </motion.div>
               )}
-            </div>
-          ))}
+            </AnimatePresence>
+          </div>
+        ))}
+        <Link href={"/store-locator"} onClick={()=>{
+            setOpen(false);
+                        setActiveDropdown(null);
+        }}>
+        Store Locator
+        </Link>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
-          {/* Mobile Icons */}
-          {/* <div className="flex gap-6 pt-4 border-t">
-            <Link href="/search">
-              <Search size={20} />
-            </Link>
-            <Link href="/account">
-              <User size={20} />
-            </Link>
-            <Link href="/cart">
-              <ShoppingCart size={20} />
-            </Link>
-          </div> */}
-        </div>
-      )}
+
     </header>
   );
 }

@@ -85,7 +85,7 @@ function Trendingsection() {
                   </div>
 
                   {/* Right */}
-                  <div className=" flex  text-gray-500 ml-8">
+                  <div className=" flex  text-gray-500 ml-4">
                     <p className="text-xs uppercase">Starting Rs: {item.price}.00</p>
                    
                   </div>

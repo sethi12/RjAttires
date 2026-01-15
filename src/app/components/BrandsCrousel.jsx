@@ -75,7 +75,7 @@ function BrandsCrousel() {
       <div className="mx-auto max-w-7xl px-4">
 
         {/* Heading */}
-        <div className="flex items-center gap-6 mb-12">
+        <div className="flex items-center gap-6 mb-5">
           <div className="flex-grow border-t border-black" />
           <h2 className="text-2xl md:text-3xl font-bold tracking-wide uppercase whitespace-nowrap">
             Shop By Brands
@@ -94,12 +94,12 @@ function BrandsCrousel() {
           {brands.map((brand, index) => (
             <div
               key={index}
-              className="min-w-[160px] flex justify-center"
+              className="min-w-[260px] flex justify-center"
             >
               <img
                 src={brand.image}
                 alt="brand"
-                className="h-20 md:h-24 object-contain"
+                className="h-30 md:h-24 object-contain"
               />
             </div>
           ))}

@@ -55,7 +55,9 @@ return (
         //   );
         })}
       </div>
-        <Collections/>
+       <div className="flex justify-center">
+      <Collections />
+    </div>
         
       {/* 🔥 TRENDING SECTION */}
      <Trendingsection/>

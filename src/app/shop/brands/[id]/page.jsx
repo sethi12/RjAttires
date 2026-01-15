@@ -4,14 +4,27 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 
 import Link from "next/link";
-import { getBrands, getProducts } from "../../../../../services/client.service";
+import { getBrands, getCategories, getProducts } from "../../../../../services/client.service";
 
 function Page() {
   const { id } = useParams(); // brand id
 
   const [brand, setBrand] = useState(null);
+  const [brandId, setBrandId] = useState("");
+const [categories, setCategories] = useState([]);
+
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [category,setCategory]=useState();
+
+const categoryMap = useMemo(() => {
+  const map = {};
+  categories.forEach((cat) => {
+    map[cat.id] = cat.name;
+  });
+  return map;
+}, [categories]);
 
   /* FETCH BRAND */
   useEffect(() => {
@@ -27,6 +40,31 @@ function Page() {
 
     fetchBrand();
   }, [id]);
+  
+
+useEffect(() => {
+  const fetchCategoriesByBrand = async () => {
+    try {
+      const allCategories = await getCategories();
+
+      // ✅ filter categories belonging to this brand
+      const brandCategories = allCategories.filter(
+        (cat) => cat.brand === id
+      );
+
+      setCategories(brandCategories);
+
+      console.log("Brand ID:", id);
+      console.log("Categories of this brand:", brandCategories);
+    } catch (error) {
+      console.error("Failed to fetch categories", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (id) fetchCategoriesByBrand();
+}, [id]);
 
   /* FETCH PRODUCTS */
   useEffect(() => {
@@ -61,14 +99,14 @@ function Page() {
 
   /* ✅ RETURN JSX (THIS WAS MISSING) */
   return (
-    <section className="py-6 card">
+    <section className="py-2 card">
       <div className="mx-auto max-w-7xl px-4">
  
         {/* HEADING */}
-        <div className="flex items-center gap-1 mb-8">
+        <div className="flex items-center gap-1 mb-6">
           <div className="flex-grow border-t-2 border-black" />
           <h2 className="text-[22px] leading-[25px] font-semibold md:text-3xl  tracking-wide uppercase whitespace-nowrap text-center">
-           HUSSAIN REHAR KARANDI <br />UNSTICHED 25
+           {brand.name} <br />{categories[0]?.name}
           </h2>
           <div className="flex-grow border-t-2 border-black" />
         </div>
@@ -79,7 +117,7 @@ function Page() {
             No products available for this brand
           </p>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-1">
             {brandProducts.map((item) => (
               <Link
                 key={item.id}
@@ -98,13 +136,16 @@ function Page() {
 
                   {/* INFO */}
                   <div className="mt-1 ml-3">
-                    <h3 className="text-xs  leading-snug">
-                     {brand.name} {item.name}
+                    <h3 className="text-[12px]  leading-snug">
+                  {brand?.name} {categoryMap[item.category]} | {item.name}
                     </h3>
 
-                    <p className="text-ml text-red-400 ">
-                      ₹{item.price}
-                    </p>
+           <p className="text-[14px] text-red-600 font-semibold mb-1">
+  ₹{Number(item.price).toLocaleString("en-IN", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}
+</p>
 
                     {/* ADD TO CART */}
                     <button
