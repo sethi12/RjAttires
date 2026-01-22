@@ -12,19 +12,19 @@ function Collections() {
     {
       title: "Winter Collection",
       subtitle: "Save up to 40% off",
-      image: "/wintercollection.jpg",
+      image: "/wintercollection2.jpg",
       link: "/shop/winter-collections",
     },
     {
       title: "Summer Collection",
       subtitle: "Save up to 10% off",
-      image: "/summercollection.jpg",
+      image: "/summercollection2.jpg",
       link: "/shop/summer-collections",
     },
     {
       title: "Festive Collection",
       subtitle: "Save up to 30% off",
-      image: "/festivecollection.jpg",
+      image: "/festivecollection2.jpg",
       link: "/shop/festive-collections",
     },
   ];
