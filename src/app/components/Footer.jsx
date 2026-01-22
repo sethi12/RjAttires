@@ -90,11 +90,12 @@ export default function Footer() {
           target="_blank" className="hover:opacity-70">
                 <img src="/instafooter.jpg" alt=""  className="h-5 object-contain rounded-4xl" />
               </Link>
-              <Link           href="https://google.com"
+              <Link           
+                href="https://https://www.facebook.com/share/1CrUyXqvNs/.com"
           target="_blank" className="hover:opacity-70">
                <img src="fbfooter.jpg" alt=""   className="h-5 object-contain rounded-3xl"/>
               </Link>
-              <Link           href="https://www.facebook.com/share/1CrUyXqvNs/"
+              <Link                    href="https://www.google.com/search?q=rj+attire&rlz=1C5OZZY_enIN1131IN1131&oq=rj+attire&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDIGCAMQRRg7MgcIBBAAGIAEMgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEIOTI5MWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8&lqi=CglyaiBhdHRpcmVIsOu2g9augIAIWhMQABABGAAYASIJcmogYXR0aXJlkgETY2xvdGhpbmdfd2hvbGVzYWxlcg#rlimm=15751366982928445618"
           target="_blank"className="hover:opacity-70">
                 <img src="googlefooter.jpg" alt=""   className="h-5 object-contain rounded-3xl" />
               </Link>

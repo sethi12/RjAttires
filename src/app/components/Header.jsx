@@ -92,7 +92,7 @@ export default function Header() {
         </Link>
 
         <Link
-          href="https://google.com"
+          href="https://https://www.facebook.com/share/1CrUyXqvNs/.com"
           target="_blank"
           className="hover:text-gray-300 gap-3"
         >
@@ -101,7 +101,7 @@ export default function Header() {
         </Link>
 
         <Link
-          href="https://www.facebook.com/share/1CrUyXqvNs/"
+          href="https://www.google.com/search?q=rj+attire&rlz=1C5OZZY_enIN1131IN1131&oq=rj+attire&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDIGCAMQRRg7MgcIBBAAGIAEMgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEIOTI5MWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8&lqi=CglyaiBhdHRpcmVIsOu2g9augIAIWhMQABABGAAYASIJcmogYXR0aXJlkgETY2xvdGhpbmdfd2hvbGVzYWxlcg#rlimm=15751366982928445618"
           target="_blank"
           className="hover:text-gray-300"
         >
