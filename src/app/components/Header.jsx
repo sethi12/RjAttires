@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useEffect, useMemo } from "react";
+import { getProducts } from "../../../services/client.service";
 import Link from "next/link";
 import { Search, User,  ChevronDown, Menu, X , Mail,
   Phone,
@@ -16,6 +18,33 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
    const {opencart}= useCart();
+   const [searchQuery, setSearchQuery] = useState("");
+const [products, setProducts] = useState([]);
+const [searchLoading, setSearchLoading] = useState(true);
+useEffect(() => {
+  const fetchProducts = async () => {
+    try {
+      const data = await getProducts();
+      setProducts(data);
+    } catch (e) {
+      console.error("Search fetch failed", e);
+    } finally {
+      setSearchLoading(false);
+    }
+  };
+
+  fetchProducts();
+}, []);
+
+const searchResults = useMemo(() => {
+  if (!searchQuery) return [];
+  return products
+    .filter((p) =>
+      p.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .slice(0, 6); // mobile-friendly limit
+}, [searchQuery, products]);
+
   const menuList = [
     {
       name: "About Us",
@@ -40,7 +69,7 @@ export default function Header() {
     {
       name: "Support",
       link: "",
-      dropdown: [{ name: "Our Blog", link: "/support/our-blog" }],
+      // dropdown: [{ name: "Our Blog", link: "/support/our-blog" }],
     },
     {
       name: "Contact Us",
@@ -186,7 +215,7 @@ export default function Header() {
 </nav>
 
 {/* MOBILE SEARCH BAR */}
-<div className="md:hidden px-4 pb-4">
+{/* <div className="md:hidden px-4 pb-4">
   <div className="relative">
     <input
       type="text"
@@ -204,20 +233,127 @@ export default function Header() {
       "
     />
 
-    <button
-      className="
-        absolute right-0 top-0 h-full
-        px-4
-        bg-gray-100
-        border-l
-        border-gray-300
-        flex items-center justify-center
-      "
-    >
-      <Search size={18} className="text-gray-600" />
-    </button>
+<Link href="/search">
+  <button
+    className="
+      absolute right-0 top-0 h-full
+      px-4
+      bg-gray-100
+      border-l
+      border-gray-300
+      flex items-center justify-center
+    "
+  >
+    <Search size={18} className="text-gray-600" />
+  </button>
+</Link>
+  </div>
+</div> */}
+
+{/* MOBILE SEARCH BAR */}
+<div className="md:hidden px-4 pb-6">
+  <div className="relative group">
+    {/* INPUT FIELD */}
+    <div className="relative flex items-center">
+      <input
+        type="text"
+        placeholder="Search for products..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="
+          w-full
+          bg-gray-50
+          border-transparent
+          focus:bg-white
+          focus:ring-2
+          focus:ring-black/5
+          focus:border-gray-300
+          rounded-2xl
+          py-3
+          pl-12
+          pr-4
+          text-sm
+          transition-all
+          duration-300
+          placeholder:text-gray-400
+          outline-none
+          shadow-sm
+        "
+      />
+      {/* SEARCH ICON (LEFT) */}
+      <div className="absolute left-4 pointer-events-none">
+        <Search size={18} className="text-gray-400 group-focus-within:text-black transition-colors" />
+      </div>
+      
+      {/* OPTIONAL: CLEAR BUTTON */}
+      {searchQuery && (
+        <button 
+          onClick={() => setSearchQuery("")}
+          className="absolute right-4 text-gray-400 hover:text-black"
+        >
+          <span className="text-xs underline uppercase tracking-widest font-bold">Clear</span>
+        </button>
+      )}
+    </div>
+
+    {/* SEARCH RESULTS */}
+    {searchQuery && !searchLoading && (
+      <div
+        className="
+          absolute
+          z-50
+          left-0
+          right-0
+          bg-white/90
+          backdrop-blur-md
+          rounded-2xl
+          mt-3
+          max-h-[60vh]
+          overflow-y-auto
+          shadow-2xl
+          border border-gray-100
+          animate-in fade-in slide-in-from-top-2
+          duration-200
+        "
+      >
+        {searchResults.length === 0 ? (
+          <div className="px-6 py-10 text-center">
+            <p className="text-sm text-gray-500">No products match your search.</p>
+          </div>
+        ) : (
+          <div className="p-2">
+            <p className="px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-gray-400">
+              Top Results
+            </p>
+            {searchResults.map((item) => (
+              <Link
+                key={item.id}
+                href={`/products/${item.id}`}
+                onClick={() => setSearchQuery("")}
+                className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group"
+              >
+                <div className="w-14 h-14 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                  <img
+                    src={item.mainImage}
+                    alt={item.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium text-gray-900 line-clamp-1">{item.name}</span>
+                  <span className="text-sm font-semibold text-blue-600">
+                    ₹{Number(item.price).toLocaleString("en-IN")}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    )}
   </div>
 </div>
+
 
       {/* Mobile Menu */}
 <AnimatePresence>

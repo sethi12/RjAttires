@@ -6,20 +6,20 @@ function Trendingsection() {
     {
       name:"KARANDI",
       image:"karandi.png",
-      link:"/shop",
+      link:"/shop/brands/amO2OquIfRMEJ1HMCVQ0",
       price:"17900"
 
     },
      {
       name:"Winter Luxe-25",
       image:"winterluxe.png",
-      link:"/shop",
+      link:"/shop/brands/nvGFjQ8zEXrV3GE2rCoZ",
       price:"12500"
 
     }, {
       name:"Massarat-25",
       image:"massrat.png",
-      link:"/shop",
+      link:"/shop/brands/BP2vhiDPigOxMQLdviC5",
       price:"30900"
 
     }

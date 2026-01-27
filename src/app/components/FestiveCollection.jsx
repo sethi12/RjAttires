@@ -195,6 +195,7 @@ function Wintercollection() {
       try {
         const data = await getCategories();
         setCategories(data);
+        console.log(data);
       } catch (error) {
         console.error("Failed to fetch categories", error);
       } finally {
@@ -262,7 +263,7 @@ function Wintercollection() {
             {winterCategories.map((category) => (
               <Link
                 key={category.id}
-                href={`/shop/brands/${category.brand}`} // ✅ brand-based navigation
+                href={`/shop/brands/${category.id}`} // ✅ brand-based navigation
               >
                 <div className="group cursor-pointer">
 
