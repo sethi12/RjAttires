@@ -17,34 +17,7 @@ export default function Page() {
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchProductAndBrand = async () => {
-  //     try {
-  //       const products = await getProducts();
-  //       const foundProduct = products.find((p) => p.id === id);
 
-  //       if (!foundProduct) {
-  //         setProduct(null);
-  //         return;
-  //       }
-
-  //       setProduct(foundProduct);
-
-  //       // fetch brand using product.brand
-  //       const brands = await getBrands();
-  //       const foundBrand = brands.find(
-  //         (b) => b.id === foundProduct.brand
-  //       );
-  //       setBrand(foundBrand || null);
-  //     } catch (err) {
-  //       console.error("Fetch error", err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchProductAndBrand();
-  // }, [id]);
   useEffect(() => {
   const fetchProductBrandAndCategory = async () => {
     try {
@@ -81,7 +54,27 @@ export default function Page() {
   };
 
   if (id) fetchProductBrandAndCategory();
+  
 }, [id]);
+const whatsappNumber = "919311000666";
+
+const productUrl =
+  typeof window !== "undefined" ? window.location.href : "";
+
+const whatsappMessage = useMemo(() => {
+  if (!product) return "";
+
+  return encodeURIComponent(
+    `Hello RJ Attires 👋\n\n` +
+    `I am interested in this product:\n\n` +
+    `🛍 Product: ${product.name}\n` +
+    `🏷 Brand: ${brand?.name || "RJ Attires"}\n\n` +
+    `🔗 Product Link:\n${productUrl}`
+  );
+}, [product, brand, productUrl]);
+
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
 
   if (loading) return null;
 
@@ -92,6 +85,7 @@ export default function Page() {
       </div>
     );
   }
+
 
   return (
     <section className="py-1 ml-2 mr-2">
@@ -231,6 +225,12 @@ export default function Page() {
             {/* WhatsApp & Measurement */}
            <div className="flex flex-row flex-wrap items-center gap-1 mb-8">
   {/* WhatsApp Button */}
+{/* WhatsApp Button */}
+<Link
+  href={whatsappLink}
+  target="_blank"
+  rel="noopener noreferrer"
+>
   <button
     className="
       flex items-center justify-center gap-3
@@ -250,6 +250,7 @@ export default function Page() {
     />
     WhatsApp
   </button>
+</Link>
 
   {/* Submit Measurement */}
   <Link href="/products/measurementform">

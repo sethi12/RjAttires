@@ -62,7 +62,7 @@ export default function Footer() {
   {/* GOOGLE MAP */}
   <li>
     <a
-      href="https://www.google.com/maps/search/?api=1&query=B-191+Industrial+Area+Phase+1+Naraina+Vihar+110028"
+      href="https://maps.app.goo.gl/p1fHrtjiiq8xvEbp7"
       target="_blank"
       rel="noopener noreferrer"
       className="flex gap-3 items-start hover:text-black transition"
