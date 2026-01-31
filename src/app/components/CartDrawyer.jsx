@@ -150,7 +150,7 @@ export default function CartDrawer() {
 
             {/* PLACE ORDER */}
             {cartItems.length > 0 && (
-              <button className="bg-[#6A1B6D] text-white py-1 text-[14px] tracking-widest flex items-center justify-center ">
+              <button className="bg-black text-white py-1 text-[14px] tracking-widest flex items-center justify-center ">
                 PLACE ORDER
                 <img src="/paytm.jpg" className="h-6 rounded-2xl" />
                 <img src="/phonepe.jpeg" className="h-6 rounded-2xl" />

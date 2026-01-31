@@ -36,26 +36,47 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Contact Us</h4>
 
-            <ul className="space-y-4 text-sm text-gray-600">
-              <li className="flex gap-3">
-                <Phone size={16} />
-                <span>+91 9311000666</span>
-              </li>
+        <ul className="space-y-4 text-sm text-gray-600">
+  {/* PHONE */}
+  <li>
+    <a
+      href="tel:+919311000666"
+      className="flex gap-3 items-start hover:text-black transition"
+    >
+      <Phone size={16} />
+      <span>+91 9311000666</span>
+    </a>
+  </li>
 
-              <li className="flex gap-3">
-                <Mail size={16} />
-                <span>Rooplabhatia@yahoo.com</span>
-              </li>
+  {/* EMAIL */}
+  <li>
+    <a
+      href="mailto:Rooplabhatia@yahoo.com"
+      className="flex gap-3 items-start hover:text-black transition"
+    >
+      <Mail size={16} />
+      <span>Rooplabhatia@yahoo.com</span>
+    </a>
+  </li>
 
-              <li className="flex gap-3">
-                <MapPin size={16} />
-                <span>
-                  B-191 Next To Bikaner Wala, Industrial Area Phase-1
-                  <br />
-                  Naraina Vihar, 110028
-                </span>
-              </li>
-            </ul>
+  {/* GOOGLE MAP */}
+  <li>
+    <a
+      href="https://www.google.com/maps/search/?api=1&query=B-191+Industrial+Area+Phase+1+Naraina+Vihar+110028"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex gap-3 items-start hover:text-black transition"
+    >
+      <MapPin size={16} />
+      <span>
+        B-191 Next To Bikaner Wala, Industrial Area Phase-1
+        <br />
+        Naraina Vihar, 110028
+      </span>
+    </a>
+  </li>
+</ul>
+
           </div>
 
           {/* Quick Links */}

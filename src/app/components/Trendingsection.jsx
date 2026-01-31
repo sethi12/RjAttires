@@ -6,20 +6,20 @@ function Trendingsection() {
     {
       name:"KARANDI",
       image:"karandi.png",
-      link:"/shop/brands/amO2OquIfRMEJ1HMCVQ0",
+      link:"/brandscategory/8JcUTwygDLzyCclM1Lzm",
       price:"17900"
 
     },
      {
       name:"Winter Luxe-25",
       image:"winterluxe.png",
-      link:"/shop/brands/nvGFjQ8zEXrV3GE2rCoZ",
+      link:"/brandscategory/AF8FD63JhOt7FygoHw6e",
       price:"12500"
 
     }, {
       name:"Massarat-25",
       image:"massrat.png",
-      link:"/shop/brands/BP2vhiDPigOxMQLdviC5",
+      link:"/brandscategory/8JcUTwygDLzyCclM1Lzm",
       price:"30900"
 
     }
@@ -50,7 +50,7 @@ function Trendingsection() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl font-[400] mb-10 text-center"
+          className="text-3xl font-normal mb-10 text-center"
         >
           Trending Products
         </motion.h2>
@@ -79,16 +79,16 @@ function Trendingsection() {
                 <div className="mt-2  justify-between items-start text-sm">
                   {/* Left */}
                   <div>
-                    <h3 className="text-1xl font-[500] tracking-wide uppercase text-center">
+                    <h3 className="text-1xl font-[500] ml-2 tracking-wide uppercase ">
                       {item.name}
                     </h3>
                   </div>
 
                   {/* Right */}
-                  <div className=" flex  text-gray-500 ml-4">
+                  {/* <div className=" flex  text-gray-500 ml-4">
                     <p className="text-xs uppercase">Starting Rs: {item.price}.00</p>
                    
-                  </div>
+                  </div> */}
                 </div>
               </Link>
             </motion.div>

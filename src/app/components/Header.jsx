@@ -203,6 +203,10 @@ const searchResults = useMemo(() => {
       {open ? <X size={24} /> : <Menu size={24} />}
     </button>
     {/* ICONS */}
+ <Link href="/search" className="hidden md:block">
+  <Search size={20} />
+</Link>
+
     <Link href="/account">
       <User size={20} />
     </Link>
@@ -214,41 +218,7 @@ const searchResults = useMemo(() => {
   </div>
 </nav>
 
-{/* MOBILE SEARCH BAR */}
-{/* <div className="md:hidden px-4 pb-4">
-  <div className="relative">
-    <input
-      type="text"
-      placeholder="Search"
-      className="
-        w-full
-        border
-        border-gray-300
-        rounded-sm
-        py-2.5
-        pl-4
-        pr-12
-        text-sm
-        focus:outline-none
-      "
-    />
 
-<Link href="/search">
-  <button
-    className="
-      absolute right-0 top-0 h-full
-      px-4
-      bg-gray-100
-      border-l
-      border-gray-300
-      flex items-center justify-center
-    "
-  >
-    <Search size={18} className="text-gray-600" />
-  </button>
-</Link>
-  </div>
-</div> */}
 
 {/* MOBILE SEARCH BAR */}
 <div className="md:hidden px-4 pb-6">

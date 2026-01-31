@@ -102,6 +102,9 @@ const cardVariants = {
           />
 
           {/* Content */}
+          <Link
+          href={item.link}
+          >
           <div className="relative z-10 h-full w-full p-4 flex flex-col justify-center">
             <h3 className="text-xl text-black leading-tight">
               {item.title}
@@ -111,19 +114,21 @@ const cardVariants = {
               {item.subtitle}
             </p>
 
-            <Link
-              href={item.link}
+            <button
+             
               className="
                 inline-block w-fit
+                mt-5
                 bg-black text-white
-                px-5.5 py-3
+                px-3.5 py-2
                 h-10
                 text-[10px] font-semibold tracking-widest
               "
             >
               SHOP NOW
-            </Link>
+            </button>
           </div>
+          </Link>
         </motion.div>
       ))}
     </motion.div>

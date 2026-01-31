@@ -77,7 +77,7 @@ function BrandsCrousel() {
         {/* Heading */}
         <div className="flex items-center gap-6 mb-5">
           <div className="flex-grow border-t border-black" />
-          <h2 className="text-2xl md:text-3xl font-bold tracking-wide uppercase whitespace-nowrap">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide uppercase whitespace-nowrap">
             Shop By Brands
           </h2>
           <div className="flex-grow border-t border-black" />

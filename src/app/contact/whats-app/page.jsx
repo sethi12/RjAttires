@@ -5,7 +5,12 @@ function page() {
   return (
     <section className="py-16">
       <div className="mx-auto max-w-7xl px-4">
-        
+      
+    <Link
+            href="https://wa.me/919311000666"
+            target="_blank"
+            className="text-xl md:text-2xl font-medium "
+          >
         {/* Heading with lines */}
         <div className="flex items-center gap-6 mb-12">
           <div className="flex-grow border-t border-black" />
@@ -28,15 +33,13 @@ function page() {
           </div>
 
           {/* Number */}
-          <Link
-            href="https://wa.me/919311000666"
-            target="_blank"
-            className="text-xl md:text-2xl font-medium hover:underline"
-          >
-            +91 9311000666
-          </Link>
-
+      <h1>
+    +91 9311000666
+      </h1>
+        
+         
         </div>
+        </Link>
       </div>
     </section>
   )
