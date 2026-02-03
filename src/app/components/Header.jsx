@@ -121,7 +121,7 @@ const searchResults = useMemo(() => {
         </Link>
 
         <Link
-          href="https://https://www.facebook.com/share/1CrUyXqvNs/.com"
+          href="https://www.facebook.com/share/1CrUyXqvNs/.com"
           target="_blank"
           className="hover:text-gray-300 gap-3"
         >
