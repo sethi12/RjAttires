@@ -112,11 +112,11 @@ export default function Footer() {
                 <img src="/instafooter.jpg" alt=""  className="h-5 object-contain rounded-4xl" />
               </Link>
               <Link           
-                href="https://https://www.facebook.com/share/1CrUyXqvNs/.com"
+                href="https://www.facebook.com/share/1CrUyXqvNs/.com"
           target="_blank" className="hover:opacity-70">
                <img src="fbfooter.jpg" alt=""   className="h-5 object-contain rounded-3xl"/>
               </Link>
-              <Link                    href="https://www.google.com/search?q=rj+attire&rlz=1C5OZZY_enIN1131IN1131&oq=rj+attire&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDIGCAMQRRg7MgcIBBAAGIAEMgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEIOTI5MWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8&lqi=CglyaiBhdHRpcmVIsOu2g9augIAIWhMQABABGAAYASIJcmogYXR0aXJlkgETY2xvdGhpbmdfd2hvbGVzYWxlcg#rlimm=15751366982928445618"
+              <Link                    href="https://www.google.com/search?q=RJ+Attires+Naraina+-+Pakistani+Suits+Wholesaler+in+Naraina%2C+Delhi&sca_esv=9df4e96468a9357a&hl=en-IN&sxsrf=ANbL-n5iEHCsRJNGg72deyrYXHGwaMlFQA%3A1769082299686&ei=uw1yadbCKdyPseMPwuDomQs&oq=RJ+Attires+Naraina+-+Pakistani+Suits+Wholesaler+in+Naraina%2C+Delhi&gs_lp=EhNtb2JpbGUtZ3dzLXdpei1zZXJwIkFSSiBBdHRpcmVzIE5hcmFpbmEgLSBQYWtpc3RhbmkgU3VpdHMgV2hvbGVzYWxlciBpbiBOYXJhaW5hLCBEZWxoaTIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYR0igFlAAWABwAXgBkAEAmAEAoAEAqgEAuAEDyAEAmAIBoAISmAMAiAYBkAYIkgcBMaAHALIHALgHAMIHAzMtMcgHEIAIAA&sclient=mobile-gws-wiz-serp#ebo=0"
           target="_blank"className="hover:opacity-70">
                 <img src="googlefooter.jpg" alt=""   className="h-5 object-contain rounded-3xl" />
               </Link>
