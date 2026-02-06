@@ -70,10 +70,39 @@
 // }
 
 
+// import "./globals.css";
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
+// import CartDrawer from "./components/CartDrawyer"; // ✅ IMPORT
+// import { Poppins } from "next/font/google";
+// import { CartProvider } from "./context/CartContext";
+
+// const poppins = Poppins({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+// });
+
+// export default function RootLayout({ children }) {
+//   return (
+//     <html lang="en">
+//       <body className={`${poppins.className} antialiased`}>
+//         <CartProvider>
+//           <Header />
+//           {children}
+//           <Footer />
+
+//           {/* ✅ MUST BE HERE */}
+//           <CartDrawer />
+//         </CartProvider>
+//       </body>
+//     </html>
+//   );
+// }
+
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import CartDrawer from "./components/CartDrawyer"; // ✅ IMPORT
+import CartDrawer from "./components/CartDrawyer";
 import { Poppins } from "next/font/google";
 import { CartProvider } from "./context/CartContext";
 
@@ -85,13 +114,22 @@ const poppins = Poppins({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
+      <body
+        className={`${poppins.className} antialiased overflow-x-hidden`}
+      >
         <CartProvider>
+          {/* HEADER */}
           <Header />
-          {children}
+
+          {/* PAGE CONTENT */}
+          <main className="w-full overflow-x-hidden">
+            {children}
+          </main>
+
+          {/* FOOTER */}
           <Footer />
 
-          {/* ✅ MUST BE HERE */}
+          {/* CART DRAWER (PORTAL-LIKE) */}
           <CartDrawer />
         </CartProvider>
       </body>
