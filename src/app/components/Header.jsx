@@ -12,6 +12,8 @@ import { Search, User,  ChevronDown, Menu, X , Mail,
 import CartIcon from "./CartIcon";
 import { useCart } from "../context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
+import MobileSearch from "./MobileSearch";
+import { useGlobalSearch } from "../hooks/useGlobalSearch";
 
 
 export default function Header() {
@@ -20,30 +22,35 @@ export default function Header() {
    const {opencart}= useCart();
    const [searchQuery, setSearchQuery] = useState("");
 const [products, setProducts] = useState([]);
-const [searchLoading, setSearchLoading] = useState(true);
-useEffect(() => {
-  const fetchProducts = async () => {
-    try {
-      const data = await getProducts();
-      setProducts(data);
-    } catch (e) {
-      console.error("Search fetch failed", e);
-    } finally {
-      setSearchLoading(false);
-    }
-  };
+// const [searchLoading, setSearchLoading] = useState(true);
+// useEffect(() => {
+//   const fetchProducts = async () => {
+//     try {
+//       const data = await getProducts();
+//       setProducts(data);
+//     } catch (e) {
+//       console.error("Search fetch failed", e);
+//     } finally {
+//       setSearchLoading(false);
+//     }
+//   };
 
-  fetchProducts();
-}, []);
+//   fetchProducts();
+// }, []);
 
-const searchResults = useMemo(() => {
-  if (!searchQuery) return [];
-  return products
-    .filter((p) =>
-      p.name.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-    .slice(0, 6); // mobile-friendly limit
-}, [searchQuery, products]);
+// const searchResults = useMemo(() => {
+//   if (!searchQuery) return [];
+//   return products
+//     .filter((p) =>
+//       p.name.toLowerCase().includes(searchQuery.toLowerCase())
+//     )
+//     .slice(0, 6); // mobile-friendly limit
+// }, [searchQuery, products]);
+
+ const {
+    results: searchResults,
+    loading: searchLoading,
+  } = useGlobalSearch(searchQuery);
 
   const menuList = [
     {
@@ -221,9 +228,9 @@ const searchResults = useMemo(() => {
 
 
 {/* MOBILE SEARCH BAR */}
-<div className="md:hidden px-4 pb-6">
+{/* <div className="md:hidden px-4 pb-6">
   <div className="relative group">
-    {/* INPUT FIELD */}
+    {/* INPUT FIELD 
     <div className="relative flex items-center">
       <input
         type="text"
@@ -250,12 +257,12 @@ const searchResults = useMemo(() => {
           shadow-sm
         "
       />
-      {/* SEARCH ICON (LEFT) */}
+      {/* SEARCH ICON (LEFT) 
       <div className="absolute left-4 pointer-events-none">
         <Search size={18} className="text-gray-400 group-focus-within:text-black transition-colors" />
       </div>
       
-      {/* OPTIONAL: CLEAR BUTTON */}
+      {/* OPTIONAL: CLEAR BUTTON 
       {searchQuery && (
         <button 
           onClick={() => setSearchQuery("")}
@@ -266,7 +273,7 @@ const searchResults = useMemo(() => {
       )}
     </div>
 
-    {/* SEARCH RESULTS */}
+    {/* SEARCH RESULTS 
     {searchQuery && !searchLoading && (
       <div
         className="
@@ -285,8 +292,8 @@ const searchResults = useMemo(() => {
           animate-in fade-in slide-in-from-top-2
           duration-200
         "
-      >
-        {searchResults.length === 0 ? (
+      > */}
+        {/* {searchResults.length === 0 ? (
           <div className="px-6 py-10 text-center">
             <p className="text-sm text-gray-500">No products match your search.</p>
           </div>
@@ -322,8 +329,13 @@ const searchResults = useMemo(() => {
       </div>
     )}
   </div>
-</div>
-
+</div> */}
+<MobileSearch
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        searchResults={searchResults.slice(0, 6)} // mobile limit
+        searchLoading={searchLoading}
+      />
 
       {/* Mobile Menu */}
 <AnimatePresence>
