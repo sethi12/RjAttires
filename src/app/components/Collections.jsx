@@ -53,8 +53,10 @@ const cardVariants = {
 };
 
   return (
-<section className="px-10 py-0 md:px-0 md:py-10">
-  <div className="mx-auto max-w-7xl px-4">
+<section className="px-4 sm:px-6 md:px-0 py-0 md:py-10">
+
+  <div className="mx-auto max-w-7xl">
+
 
     {!isShopPage && (
       <motion.div
